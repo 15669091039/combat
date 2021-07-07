@@ -22,4 +22,7 @@ echo json_encode(
     ]);
 
 
+exit(666);
+
+
 
