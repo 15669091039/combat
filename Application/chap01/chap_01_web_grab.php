@@ -10,19 +10,38 @@ define('DEFAULT_TAG','img');
 
 require __DIR__.'/../Autoload/Loader.php';
 Application\Autoload\Loader::init(__DIR__.'/../..');
-$test=new Application\test\WebGrab();
+//$test=new Application\test\WebGrab();
+//$url=strip_tags($_GET['url']??DEFAULT_URL);
+//$tag=strip_tags($_GET['tag']??DEFAULT_TAG);
+//
+//echo json_encode(
+//    [
+//        'message'=>'获取成功',
+//        'attribute'=>$test->getAttribute($url,'src'),
+//        'tag'=>$test->getTags($url,$tag)
+//    ]);
+
+
+
+
+$deep=new Application\test\Deep();
 $url=strip_tags($_GET['url']??DEFAULT_URL);
 $tag=strip_tags($_GET['tag']??DEFAULT_TAG);
 
-echo json_encode(
-    [
-        'message'=>'获取成功',
-        'attribute'=>$test->getAttribute($url,'src'),
-        'tag'=>$test->getTags($url,$tag)
-    ]);
+foreach ($deep->scan($url,$tag) as $item){
+    $src=$item['attributes']['src']??null;
+    if ($src&&(stripos($src,'png')||stripos($src,'jpg'))){
+        printf('<br><img src="https://%s%s" />',$url,$src);
+    }
+}
 
 
-exit(666);
+
+
+
+
+
+
 
 
 
