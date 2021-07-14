@@ -23,5 +23,16 @@ class Securityclass
             'alpha'=>function($a){return ctype_alpha($a);}
         ];
     }
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+        preg_match('/^(filter|validate)(.*)$/i',$name,$matches);
+        $prefix=$matches[1]??'';
+        $function=strtolower($matches[2]??'');
+        if ($prefix&&$function){
+            return $this->$prefix[$function]($arguments[0]);
+        }
+        return 'error';
+    }
 
 }
