@@ -8,7 +8,6 @@
 define('LOG_FILES','./serverlog.logbak');
 include '../Autoload/Loader.php';
 \Application\Autoload\Loader::init(__DIR__.'/../..');
-$s=3;
 $freq=function ($line) {
     $ip =$this->getIp($line);
   if ($ip){
@@ -33,5 +32,3 @@ asort($access->frequency);
 foreach ($access->frequency as $key=>$value){
     printf('%16s:%6d'.'<br>',$key,$value);
 }
-$S=$access->fileIteratorByLine();
-print_r($access->fileIteratorByLine());
