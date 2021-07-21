@@ -31,7 +31,7 @@ class Connection
             $this->pdo=new PDO($dsn,$config['user'],$config['password'],[PDO::ATTR_ERRMODE=>$config['errmode']]);
 
         }catch (\PDOException $e){
-            throw new Exception($e->getMessage());
+
             error_log($e->getMessage());
         }
     }

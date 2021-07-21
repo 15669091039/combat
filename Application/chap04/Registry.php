@@ -11,17 +11,23 @@ namespace Application\chap04;
 
 class Registry
 {
+    protected const SIGN_LOCAL='year this is changLiang';
     protected static $instance =NULL;
     protected $registry=array();
     public function __construct()
     {
         // 谁都不能为这个类创建实例
     }
-    public static function getInstance(){
+    public static function getInstance(): ?Registry
+    {
         if (!self::$instance){
             self::$instance=new self();
         }
         return self::$instance;
+    }
+    public function getNormal(): string
+    {
+        return self::SIGN_LOCAL;
     }
     public function __get($key){
         return $this->registry[$key]??null;
