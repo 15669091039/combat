@@ -8,7 +8,7 @@
 return [
     'driver'=>'mysql',
     'host'=>'localhost',
-    'dbname'=>'kaojiyun0908',
+    'dbname'=>'php7cookbook',
     'user'=>'root',
     'password'=>'zsyt1314',
     'errmode'=>PDO::ERRMODE_EXCEPTION,
