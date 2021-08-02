@@ -39,6 +39,9 @@ class Base
             $method='get'.ucfirst($propertyName);
             $data[$dbColnum]=$this->$method()??null;
         }
+        if (!empty($data)){
+            return $data;
+        }
         return false;
     }
 
