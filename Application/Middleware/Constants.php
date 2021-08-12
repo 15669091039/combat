@@ -12,7 +12,7 @@ namespace Application\Middleware;
 class Constants
 {
     const HEADER_HOST = 'host'; // 主机报头
-    const HEADER_CONTENT_TYPE ='Content_Type';
+    const HEADER_CONTENT_TYPE ='Content-Type';
     const HEADER_CONTENT_LENGTH = 'Content-Length';
     const METHOD_GET = 'get';
     const METHOD_POST = 'post';
