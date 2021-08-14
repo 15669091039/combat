@@ -7,9 +7,11 @@
  */
 
 namespace Application\Acl;
-require '../../vendor/autoload.php';
+
 
 use Application\Database\Connection;
+use Application\Middleware\Response;
+use Application\Middleware\TextStream;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -27,7 +29,25 @@ class DbTable  implements AuthenticateInterface
        $code=401;
        $info=false;
        $body=new TextStream(self::ERROR_AUTH);
-       $params=json_decode($request->getBody()->getContent);
+       $params=json_decode($request->getBody()->getContents());
+       $response=new Response();
+       $username=$params->username??false;
+       if ($username){
+           $sql='select * from '.$this->table.' where email=?';
+           $stmt=$this->conn->pdo->prepare($sql);
+           $stmt->execute([$username]);
+           $row=$stmt->fetch(\PDO::FETCH_ASSOC);
+           if($row){
+               if (password_verify($params->password,$row['password'])){
+                   unset($row['password']);
+                   $body=new TextStream(json_encode($row));
+                   $response->withBody($body);
+                   $code=202;
+                   $info=$row;
+               }
+           }
+       }
+       return  $response->withBody($body)->withStatus($code);
     }
 
 }

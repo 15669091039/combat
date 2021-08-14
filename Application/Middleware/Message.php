@@ -15,7 +15,7 @@ class Message implements MessageInterface
     protected $body;
     protected $version;
     protected $httpHeaders = array();
-    const DEFAULT_BODY_STREAM = '';
+    const DEFAULT_BODY_STREAM = 'php://input';
 
     public function getBody()
     {
