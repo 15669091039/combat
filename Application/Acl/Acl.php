@@ -11,6 +11,7 @@ namespace Application\Acl;
 
 use Application\Middleware\Response;
 use Application\Middleware\TextStream;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class Acl
@@ -47,7 +48,7 @@ class Acl
         };
         return $allow;
     }
-    public function isAuthorized(ResponseInterface $request)
+    public function isAuthorized(RequestInterface $request)
     {
         $code=401;
         $text['page']=$this->pages[$this->default];
