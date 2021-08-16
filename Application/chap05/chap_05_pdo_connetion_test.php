@@ -30,5 +30,6 @@ include '../Autoload/Loader.php';
 
 $sql=\Application\Database\Finder::select('user_examiner_teacher')->where('id>0')->and('id<40')->getSql();
 $pdo=new \Application\Database\Connection(include '../Database/config.php');
-
+$sql='select id from user_examiner_teacher where id=10';
+$s=$pdo->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 var_dump($pdo->pdo->query($sql)->fetchAll());
