@@ -70,3 +70,6 @@ class Loader
     }
 
 }
+
+
+Loader::init(__DIR__ . '/../..');

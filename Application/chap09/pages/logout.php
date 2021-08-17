@@ -7,3 +7,4 @@
  */
 $_SESSION['info']=false;
 session_destroy();
+echo 'this is logout';
