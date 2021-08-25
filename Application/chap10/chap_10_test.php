@@ -6,8 +6,11 @@
  * When you read this code, good luck for you.
  */
 $redis=new Redis();
-$redis->connect('127.0.0.1');
-$redis->select(5);
+$redis->connect('150.158.184.125');
+$redis->auth('zsyt1314');
+
+//$redis->select(5);
 //echo $redis->lPush('hello ',1,2,3);
 //echo $redis->lRange('hello',0,-1);
-echo $redis->incr('num');
+echo $redis->append('aa',99999);
+$redis->close();
