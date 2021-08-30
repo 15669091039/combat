@@ -81,21 +81,25 @@ $redis->select(5);
 //$redis->lIndex('id',3);
 //$redis->lSet('id',3,0);
 //$redis->lTrim();
-$redis->sAdd('bbb',[2,3,4,5]);
-$redis->sRem('bbb','');
-$redis->sMembers('bbb'); // 查询集合内所有内容
-$redis->sIsMember('bbb',666);
-$redis->sDiff();
-$redis->sUnion();
-$redis->sInter();
-$redis->sDiffStore();
-$redis->sUnionStore();
-$redis->sInterStore();
-$redis->sIsMember();
-$redis->sMembers();
-$redis->sCard(); // 获得元素个数;
-$redis->sRandMember(); // 随机获得集合中的元素
-$redis->sPop();
-$redis->rawCommand();
+
+//$redis->sAdd('bbb',[2,3,4,5]);
+//$redis->sRem('bbb','');
+//$redis->sMembers('bbb'); // 查询集合内所有内容
+//$redis->sIsMember('bbb',666);
+//$redis->sDiff();
+//$redis->sUnion();
+//$redis->sInter();
+//$redis->sDiffStore();
+//$redis->sUnionStore();
+//$redis->sInterStore();
+//$redis->sIsMember();
+//$redis->sMembers();
+//$redis->sCard(); // 获得元素个数;
+//$redis->sRandMember(); // 随机获得集合中的元素
+//$redis->sPop();
+//$redis->rawCommand();
 
 
+var_dump($redis->zAdd('zhangsan',67,888));
+var_dump($redis->zRange('zhangsan',0,4,true));
+echo $redis->zScore('zhangsan',888);
