@@ -1,5 +1,9 @@
 {
+  "name": "15669091039/combat",
   "require-dev":{
     "phpunit/phpunit":"*"
+  },
+  "require": {
+    "ext-json": "*"
   }
 }

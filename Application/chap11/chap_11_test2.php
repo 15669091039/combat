@@ -98,8 +98,11 @@ $redis->select(5);
 //$redis->sRandMember(); // 随机获得集合中的元素
 //$redis->sPop();
 //$redis->rawCommand();
+for ($i=0;$i<3;$i++){
+   $s= $redis->brPop(['myrenwu','register'],2);
+}
 
-
-var_dump($redis->zAdd('zhangsan',67,888));
-var_dump($redis->zRange('zhangsan',0,4,true));
-echo $redis->zScore('zhangsan',888);
+//
+//var_dump($redis->zAdd('zhangsan',67,888));
+//var_dump($redis->zRange('zhangsan',0,4,true));
+//echo $redis->zScore('zhangsan',888);
